@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة ICT للتحليل المالي</title>
+    <style>
+        :root { --bg: #0a0a0a; --accent: #00ffaa; --text: #e0e0e0; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
+        nav { background: #111; padding: 15px; text-align: center; border-bottom: 1px solid var(--accent); }
+        .main-container { display: flex; flex-direction: column; gap: 20px; padding: 20px; }
+        .row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .box { background: #161616; border-radius: 8px; border: 1px solid #333; padding: 10px; flex: 1; min-width: 300px; }
+        #chart-area { height: 600px; }
+        h2 { color: var(--accent); font-size: 1.2rem; border-right: 3px solid var(--accent); padding-right: 10px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h1>لوحة تحكم متداول ICT 📈</h1>
+</nav>
+
+<div class="main-container">
+    <div class="box">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        { "symbols": [{"proName":"FX_IDC:EURUSD","title":"EUR/USD"},{"proName":"BITSTAMP:BTCUSD","title":"BTC/USD"},{"proName":"OANDA:XAUUSD","title":"ذهب"}], "colorTheme": "dark", "locale": "ar" }
+        </script>
+    </div>
+
+    <div class="row">
+        <div class="box" id="chart-area">
+            <h2>التحليل الفني المباشر</h2>
+            <div id="tradingview_chart" style="height: 90%;"></div>
+        </div>
+
+        <div class="box" style="max-height: 600px; overflow: hidden;">
+            <h2>المفكرة الاقتصادية (أوقات التلاعب)</h2>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+            { "colorTheme": "dark", "isTransparent": false, "width": "100%", "height": "100%", "locale": "ar", "importanceFilter": "-1,0,1" }
+            </script>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script type="text/javascript">
+  new TradingView.widget({
+    "autosize": true, "symbol": "FX:EURUSD", "interval": "15", "timezone": "Etc/UTC",
+    "theme": "dark", "style": "1", "locale": "ar", "enable_publishing": false,
+    "allow_symbol_change": true, "container_id": "tradingview_chart"
+  });
+</script>
+
+</body>
+</html>
